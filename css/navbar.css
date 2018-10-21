@@ -1,0 +1,75 @@
+/* 
+ *   Navigation bar 
+*/
+
+/* Layout */
+
+nav {
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    line-height: 80px;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "brand menubutton" "menu menu";
+}
+
+nav.hide {
+    transform: translateY(-332px);
+}
+
+nav ul.navbar-menu {
+    display: none;
+    margin: 0;
+    padding: 0;
+    line-height: 80px;
+    grid-area: menu;
+}
+
+nav ul.navbar-menu li {
+    display: block;
+}
+
+nav ul.navbar-menu li a {
+    display: block;
+}
+
+nav a {
+    padding-left: 1em;
+}
+
+nav a.icon {
+    text-align: right;
+    padding-right: 1em;
+}
+
+/* Presentation */
+
+nav {
+    background: #d10003;
+    box-shadow: 4px 4px 4px #00000044;
+    transition: all 0.2s;
+}
+
+nav ul.navbar-menu {
+    background: #970000;
+    box-shadow: 4px 4px 4px #00000044;
+}
+
+nav ul.navbar-menu li a {
+    color: #ffffff;
+    font-size: 1.8rem;
+}
+
+nav a#brand {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+nav a.icon {
+    font-size: 1.8rem;
+}

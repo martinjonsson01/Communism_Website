@@ -1,0 +1,89 @@
+/*
+ * First section
+*/
+
+/* section Layout */
+
+/* section:nth-of-type(1) Selects first section */
+
+section:nth-of-type(1) {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "papa" "header";
+}
+
+section:nth-of-type(1) img {
+    grid-area: papa;
+    margin: auto;
+    margin-top: 0;
+}
+
+section:nth-of-type(1) header {
+    grid-area: header;
+    text-align: center;
+}
+
+section:nth-of-type(1) h1 {
+    text-align: center;
+    margin: 0;
+    margin-top: 2rem;
+}
+
+section:nth-of-type(1) h2 {
+    text-align: center;
+    margin: 0;
+    margin-top: 1rem;
+}
+
+section:nth-of-type(1) hr {
+    grid-area: header;
+    width: 2rem;
+    height: 0.1rem;
+    margin-top: 3rem;
+}
+
+section:nth-of-type(1) img.background {
+    grid-row-start: papa;
+    grid-row-end: header;
+}
+
+section:nth-of-type(1) img.banner {
+    grid-row-start: papa;
+    grid-row-end: header;
+    margin: 0;
+    width: auto;
+    height: auto;
+}
+
+@media only screen and (min-width: 761px) {
+    /* Selects all images in first section except the background images. */
+    section:nth-of-type(1) img:not(.background):not(.banner) {
+        content: url(../img/stalin_pointing_wide.png);
+    }
+}
+
+/* section Presentation */
+
+section:nth-of-type(1) h1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    color: #ff0000;
+    -webkit-text-stroke-width: 0.05rem;
+    -webkit-text-stroke-color: black;
+}
+
+section:nth-of-type(1) h2 {
+    text-transform: uppercase;
+    font-size: 5rem;
+    color: #ff0000;
+    -webkit-text-stroke-width: 0.05rem;
+    -webkit-text-stroke-color: #000000;
+}
+
+section:nth-of-type(1) hr {
+    background-color: #000000;
+}
