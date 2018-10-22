@@ -1,0 +1,47 @@
+/*
+ * Third section
+*/
+
+/* section Layout */
+
+/* section:nth-of-type(3) Selects third section */
+
+section:nth-of-type(3) {
+    display: flex;
+    width: 50rem;
+    height: 100vh;
+    max-width: 100%;
+    margin: auto;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+section:nth-of-type(3) h1 {
+    padding: 0 1rem;
+    margin: 2rem 0;
+}
+
+section:nth-of-type(3) p {
+    padding: 0 1rem;
+    margin: 0;
+}
+
+section:nth-of-type(3) img {
+    width: 7rem;
+    height: 7rem;
+    padding: 0 1rem;
+}
+
+/* section Presentation */
+
+section:nth-of-type(3) h1 {
+    text-transform: uppercase;
+    font-size: 5vh;
+}
+
+section:nth-of-type(3) p {
+    color: #484848;
+    font-size: 4vh;
+}
