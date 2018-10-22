@@ -4,10 +4,13 @@
 
 /* section Layout */
 
+/* section:nth-of-type(2) Selects second section */
+
 section:nth-of-type(2) {
     width: 100vw;
     height: 50vh;
     max-width: 100%;
+    overflow: hidden;
 }
 
 section:nth-of-type(2) h1 {
@@ -24,8 +27,6 @@ section:nth-of-type(2) a {
     padding: 1rem 3rem;
     text-align: center;
 }
-
-/* section:nth-of-type(2) Selects second section */
 
 /* section Presentation */
 

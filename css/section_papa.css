@@ -9,15 +9,17 @@
 section:nth-of-type(1) {
     display: grid;
     width: 100vw;
-    height: 100vh;
     max-width: 100%;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 50vh 50vh;
     grid-template-areas: "papa" "header";
 }
 
 section:nth-of-type(1) img {
     grid-area: papa;
+    width: auto;
+    height: 50vh;
+    max-width: 100%;
     margin: auto;
     margin-top: 0;
 }
@@ -49,14 +51,16 @@ section:nth-of-type(1) hr {
 section:nth-of-type(1) img.background {
     grid-row-start: papa;
     grid-row-end: header;
+    z-index: -1;
 }
 
 section:nth-of-type(1) img.banner {
     grid-row-start: papa;
     grid-row-end: header;
     margin: 0;
-    width: auto;
+    width: 100vw;
     height: auto;
+    max-width: 100%;
 }
 
 @media only screen and (min-width: 761px) {
