@@ -37,6 +37,7 @@ section:nth-of-type(6) div {
 section:nth-of-type(6) article {
     display: grid;
     max-width: 365px;
+    max-height: 624px;
     overflow: hidden;
     grid-template-columns: 1fr;
     grid-template-rows: 3fr 7fr;
@@ -113,7 +114,7 @@ section:nth-of-type(6) article:nth-of-type(3) {
 }
 
 section:nth-of-type(6) article p {
-    font-size: 2.8vh;
+    font-size: 2.7vh;
     background-color: #ffffffE6;
     color: #2e2e2e;
 }

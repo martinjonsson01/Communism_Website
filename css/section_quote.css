@@ -53,8 +53,8 @@ section:nth-of-type(5) picture {
         margin: 2vw 0 0 0;
     }
     section:nth-of-type(5) picture {
-        width: 42vw;
-        height: auto;
+        width: auto;
+        height: 416px;
         grid-row-start: miyazaki;
         grid-row-end: signature;
     }
