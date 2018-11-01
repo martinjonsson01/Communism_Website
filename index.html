@@ -17,6 +17,19 @@
 
 <body>
 
+    <script>
+        // Register the service worker that intercepts jpg and png requests and replaces their responses with webp responses.
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('js/webp-service-worker.js').then(function (registration) {
+                // Registration was successful
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }).catch(function (err) {
+                // registration failed :(
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        }
+    </script>
+
     <!-- Top Navigation Menu -->
     <nav id="nav" class="hide">
         <a href="/" id="brand">Communism</a>
@@ -33,7 +46,7 @@
         </ul>
     </nav>
 
-    <!-- Intro section -->
+    <!-- Papa section -->
     <section>
         <!-- Soviet flag banner -->
         <img class="banner" src="img/soviet_flag.png" alt="Soviet flag" />
