@@ -37,7 +37,7 @@ section:nth-of-type(5) h2 {
     margin: 0 5vw auto auto;
 }
 
-section:nth-of-type(5) img {
+section:nth-of-type(5) picture {
     width: 100vw;
     height: auto;
     grid-area: miyazaki;
@@ -52,7 +52,7 @@ section:nth-of-type(5) img {
     section:nth-of-type(5) p {
         margin: 2vw 0 0 0;
     }
-    section:nth-of-type(5) img {
+    section:nth-of-type(5) picture {
         width: 42vw;
         height: auto;
         grid-row-start: miyazaki;

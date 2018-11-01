@@ -25,6 +25,15 @@ section:nth-of-type(1) img {
     margin-top: 0;
 }
 
+section:nth-of-type(1) picture {
+    grid-area: papa;
+    width: auto;
+    height: 50vh;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 0;
+}
+
 section:nth-of-type(1) header {
     grid-area: header;
     text-align: center;
@@ -49,13 +58,13 @@ section:nth-of-type(1) hr {
     margin-top: 3rem;
 }
 
-section:nth-of-type(1) img.background {
+section:nth-of-type(1) .background {
     grid-row-start: papa;
     grid-row-end: header;
     z-index: -1;
 }
 
-section:nth-of-type(1) img.banner {
+section:nth-of-type(1) .banner {
     grid-row-start: papa;
     grid-row-end: header;
     margin: 0;
@@ -65,11 +74,7 @@ section:nth-of-type(1) img.banner {
 }
 
 @media only screen and (min-width: 761px) {
-    /* Selects all images in first section except the background images. */
-    section:nth-of-type(1) img:not(.background):not(.banner) {
-        content: url(../img/stalin_pointing_wide.png);
-    }
-    section:nth-of-type(1) img.banner {
+    section:nth-of-type(1) .banner {
         width: auto;
         height: 50vh;
     }

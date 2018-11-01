@@ -17,26 +17,12 @@
 
 <body>
 
-    <script>
-        // Register the service worker that intercepts jpg and png requests and replaces their responses with webp responses.
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('js/webp-service-worker.js').then(function (registration) {
-                // Registration was successful
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }).catch(function (err) {
-                // registration failed :(
-                console.log('ServiceWorker registration failed: ', err);
-            });
-        }
-    </script>
-
     <!-- Top Navigation Menu -->
     <nav id="nav" class="hide">
         <a href="/" id="brand">Communism</a>
-
         <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
         <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
-            <i class="fa fa-bars"></i>
+            <img src="img/round-menu-24px.svg">
         </a>
         <!-- Navigation links (hidden by default) -->
         <ul class="navbar-menu" id="navbar-menu">
@@ -49,10 +35,21 @@
     <!-- Papa section -->
     <section>
         <!-- Soviet flag banner -->
-        <img class="banner" src="img/soviet_flag.png" alt="Soviet flag" />
+        <picture class="banner">
+            <source srcset="img/soviet_flag.webp" type="image/webp">
+            <source srcset="img/soviet_flag.png" type="image/png">
+            <img class="banner" src="img/soviet_flag.png" alt="Soviet flag" />
+        </picture>
         <!-- Hammer and sickle background -->
         <img class="background" src="img/hammer_and_sickle.svg" alt="Hammer and sickle" />
-        <img src="img/stalin_pointing_thin.png" alt="Stalin pointing right at you with glowing eyes" />
+        <!-- Papa stalin pointing at you -->
+        <picture>
+            <source media="(min-width: 761px)" srcset="img/stalin_pointing_wide.webp" type="image/webp">
+            <source media="(min-width: 761px)" srcset="img/stalin_pointing_wide.png" type="image/png">
+            <source srcset="img/stalin_pointing_thin.webp" type="image/webp">
+            <source srcset="img/stalin_pointing_thin.png" type="image/png">
+            <img src="img/stalin_pointing_thin.png" alt="Stalin pointing right at you with glowing eyes" />
+        </picture>
         <header>
             <h1>Papa stalin needs</h1>
             <h2>You</h2>
@@ -118,7 +115,11 @@
     <!-- Quote section -->
     <section>
         <div>
-            <img src="img/hayao-miyazaki.png" alt="Hayao Miyazaki" />
+            <picture>
+                <source srcset="img/hayao-miyazaki.webp" type="image/webp">
+                <source srcset="img/hayao-miyazaki.png" type="image/png">
+                <img src="img/hayao-miyazaki.png" alt="Hayao Miyazaki" />
+            </picture>
             <p>
                 “Anime might’ve been a
                 <br>
