@@ -1,0 +1,69 @@
+/*
+ * Fourth section
+*/
+
+/* section Layout */
+
+/* section:nth-of-type(4) Selects fourth section */
+
+section:nth-of-type(4) {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    margin: 0 auto 10vh auto;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+section:nth-of-type(4) div {
+    width: 90vw;
+    max-width: 1300px;
+    padding: 2vw;
+    margin: auto;
+}
+
+section:nth-of-type(4) h1 {
+    width: fit-content;
+    padding: 0 0 0 1rem;
+    margin: 1rem 0 0 0;
+}
+
+section:nth-of-type(4) ul {
+    display: flex;
+    width: fit-content;
+    padding: 0 1rem;
+    margin: 3vh auto 0 auto;
+    flex-wrap: wrap;
+}
+
+section:nth-of-type(4) li {
+    width: 280px;
+}
+
+section:nth-of-type(4) img {
+    box-sizing: initial;
+    width: 8vh;
+    height: 8vh;
+    padding: 0 1rem;
+}
+
+/* section Presentation */
+
+section:nth-of-type(4) div {
+    background-color: #fafafa;
+    box-shadow: 0 0 10px 5px #00000016;
+}
+
+section:nth-of-type(4) h1 {
+    font-size: 4vh;
+}
+
+section:nth-of-type(4) ul {
+    color: #484848;
+    font-size: 4vh;
+    list-style-image: url("../img/baseline-clear-24px.svg");
+    list-style-position: inside;
+}

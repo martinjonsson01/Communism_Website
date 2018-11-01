@@ -11,7 +11,7 @@ section:nth-of-type(3) {
     width: 50rem;
     height: 100vh;
     max-width: 100%;
-    margin: auto;
+    margin: 0 auto 10vh auto;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
@@ -29,6 +29,7 @@ section:nth-of-type(3) p {
 }
 
 section:nth-of-type(3) img {
+    box-sizing: initial;
     width: 7rem;
     height: 7rem;
     padding: 0 1rem;

@@ -5,6 +5,10 @@
 @import url(section_papa.css);
 @import url(section_join.css);
 @import url(section_equality.css);
+@import url(section_exception.css);
+@import url(section_quote.css);
+@import url(section_rolemodels.css);
+@import url(footer.css);
 /* 
  *   Basics 
 */
@@ -22,6 +26,7 @@ html {
     margin: 0;
     font-size: 100%;
     font-family: "Red October";
+    box-sizing: border-box;
 }
 
 /* html Presentation */
@@ -36,6 +41,14 @@ body {
     width: 100%;
     height: 100%;
     margin: 0;
+    scroll-snap-type: y mandatory;
+}
+
+/* section Layout*/
+
+section {
+    margin: 0 0 30vh 0;
+    scroll-snap-align: start;
 }
 
 /* a Presentation */
@@ -55,4 +68,12 @@ a {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+/* border-box reset */
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }

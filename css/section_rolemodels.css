@@ -1,0 +1,124 @@
+/*
+ * Sixth section
+*/
+
+/* section Layout */
+
+/* section:nth-of-type(6) Selects sixth section */
+
+section:nth-of-type(6) {
+    width: 100vw;
+    max-width: 100%;
+    margin: 0 auto 5vh auto;
+    overflow: hidden;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    align-content: center;
+}
+
+section:nth-of-type(6) header {
+    width: 50rem;
+    max-width: 100%;
+    margin: auto auto 6vh auto;
+    flex-wrap: wrap;
+}
+
+section:nth-of-type(6) div {
+    display: flex;
+    width: 100vw;
+    margin: auto;
+    padding: 2vh;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+section:nth-of-type(6) article {
+    display: grid;
+    max-width: 365px;
+    overflow: hidden;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 7fr;
+    grid-template-areas: "name" "about";
+    margin: auto;
+    box-shadow: 0 0 10px 5px #00000016;
+}
+
+section:nth-of-type(6) article h2 {
+    grid-area: name;
+    margin: 0;
+    padding: 2rem;
+    text-align: center;
+}
+
+section:nth-of-type(6) article p {
+    grid-area: about;
+    margin: 0;
+    padding: 2rem;
+}
+
+@media (hover: hover) {
+    /* active when user is able to hover over elements (usually means they're on a computer instead of touch device)*/
+    section:nth-of-type(6) article p {
+        opacity: 0;
+        transition: 0.2s;
+    }
+    section:nth-of-type(6) article h2 {
+        opacity: 0;
+        transition: 0.2s;
+    }
+    section:nth-of-type(6) article.hover p {
+        opacity: 1;
+    }
+    section:nth-of-type(6) article.hover h2 {
+        opacity: 1;
+    }
+}
+
+/* section Presentation */
+
+section:nth-of-type(6) header h1 {
+    color: #000000;
+    font-size: 5vh;
+}
+
+section:nth-of-type(6) article {
+    color: #000000;
+}
+
+section:nth-of-type(6) article strong {
+    color: #d90000;
+}
+
+section:nth-of-type(6) article:nth-of-type(1) {
+    background: url(../img/stalin.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+}
+
+section:nth-of-type(6) article:nth-of-type(2) {
+    background: url(../img/lenin.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+}
+
+section:nth-of-type(6) article:nth-of-type(3) {
+    background: url(../img/Karl_Marx.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+}
+
+section:nth-of-type(6) article p {
+    font-size: 2.8vh;
+    background-color: #ffffffE6;
+    color: #2e2e2e;
+}
+
+section:nth-of-type(6) article h2 {
+    font-size: 5vh;
+    background-color: #ffffffE6;
+}
