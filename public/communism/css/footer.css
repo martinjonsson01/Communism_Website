@@ -1,0 +1,47 @@
+/* footer Layout */
+
+footer {
+    max-width: 100vw;
+    overflow: hidden;
+    text-align: center;
+}
+
+footer img {
+    width: auto;
+    height: 10vh;
+    margin-top: 5vh;
+}
+
+footer br {
+    display: block;
+    content: " ";
+}
+
+/* footer Presentation */
+
+footer {
+    color: #fdd008;
+    background-color: #970000;
+}
+
+footer img {
+    fill: #970000;
+}
+
+footer br {
+    margin-top: 5vh;
+}
+
+footer a {
+    color: #ffff53;
+    text-decoration: underline;
+    text-decoration-color: #fdd008;
+}
+
+footer a:hover {
+    background-color: #fdd008;
+}
+
+footer b {
+    font-family: Helvetica, Arial, "Red October", sans-serif;
+}

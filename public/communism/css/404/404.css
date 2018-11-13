@@ -1,0 +1,54 @@
+/* Import base components. */
+
+@import url(../core.css);
+@import url(../footer.css);
+/* Layout */
+
+body {
+    justify-content: center;
+    text-align: center;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Presentation */
+
+body {
+    /* Two background images; One lowres and one highres. The lowres one gets loaded before the highres one so that the user doesn't
+       have to stare at a blank screen. The higres one replaces the lowres one when it gets downloaded. */
+    background-image: url(../../assets/img/raise_the_flag_highres.jpg), url(../../assets/img/raise_the_flag_lowres.jpg);
+    background-position: center, center;
+    background-size: cover;
+}
+
+article {
+    color: #fafafa;
+    -webkit-text-stroke-width: 0.5vh;
+    -webkit-text-stroke-color: black;
+}
+
+article h1 {
+    font-size: 7vh;
+}
+
+article h2 {
+    font-size: 5vh;
+    color: #ececec;
+    -webkit-text-stroke-width: 0.3vh;
+}
+
+article p {
+    font-size: 5vh;
+    color: #ececec;
+    -webkit-text-stroke-width: 0.3vh;
+}
+
+article strong {
+    color: #d90000;
+    -webkit-text-stroke-width: 0.4vh;
+    -webkit-text-stroke-color: #fdd008;
+}

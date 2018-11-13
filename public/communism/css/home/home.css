@@ -1,0 +1,15 @@
+/* Import base components. */
+
+@import url(../core.css);
+@import url(section_papa.css);
+@import url(section_join.css);
+@import url(section_equality.css);
+@import url(section_exception.css);
+@import url(section_quote.css);
+@import url(section_rolemodels.css);
+/* section Layout*/
+
+section {
+    margin: 0 0 30vh 0;
+    scroll-snap-align: start;
+}

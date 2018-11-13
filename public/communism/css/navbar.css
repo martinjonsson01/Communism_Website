@@ -1,0 +1,83 @@
+/* 
+ *   Navigation bar 
+*/
+
+/* Layout */
+
+nav {
+    position: fixed;
+    height: 80px;
+    width: 100vw;
+    line-height: 80px;
+    top: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "brand menubutton" "menu menu";
+}
+
+nav.hide {
+    transform: translateY(-332px);
+}
+
+nav ul.navbar-menu {
+    display: none;
+    margin: 0;
+    padding: 0;
+    line-height: 80px;
+    grid-area: menu;
+}
+
+nav ul.navbar-menu li {
+    display: block;
+}
+
+nav ul.navbar-menu li a {
+    display: block;
+}
+
+nav a {
+    padding-left: 1em;
+}
+
+nav a.icon {
+    text-align: right;
+    padding-right: 1em;
+}
+
+/* Presentation */
+
+nav {
+    background: #d10003;
+    box-shadow: 4px 4px 4px #00000044;
+    transition: all 0.2s;
+    z-index: 1;
+}
+
+nav.top {
+    background: transparent;
+    box-shadow: 0px 0px 0px #00000044;
+    transition: all 0.5s;
+}
+
+nav ul.navbar-menu {
+    background: #970000;
+    box-shadow: 4px 4px 4px #00000044;
+}
+
+nav ul.navbar-menu li a {
+    color: #ffff53;
+    font-size: 1.8rem;
+}
+
+nav a#brand {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+nav.top a#brand {
+    -webkit-text-stroke-width: 0.1vh;
+    -webkit-text-stroke-color: #000000;
+}
