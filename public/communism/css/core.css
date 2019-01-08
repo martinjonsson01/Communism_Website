@@ -7,8 +7,11 @@
 */
 
 @font-face {
-    font-family: 'Red October', 'Roboto', 'Arial';
-    src: url('../assets/fonts/Red\ October.ttf') format('truetype');
+    font-family: 'Red October';
+    src: url('../assets/fonts/red_october-webfont.woff2') format('woff2'),
+         url('../assets/fonts/red_october-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /* html Layout */
@@ -19,7 +22,6 @@ html {
     margin: 0;
     font-size: 100%;
     font-family: "Red October";
-    box-sizing: border-box;
 }
 
 /* html Presentation */

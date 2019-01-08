@@ -1,0 +1,276 @@
+<!-- Made by Martin Jonsson -->
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Grundstenar - Murtin</title>
+    <meta name="Description" content="En text om grundstenarna för säker lagring av användaruppgifter.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../../assets/img/marx_stylized.png" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/assignment/assignment.css" />
+    <script src="../../js/assignment.js"></script>
+    <script src="../../js/3rdpartycode.js"></script>
+</head>
+
+<body onload="updateDynamicHeaders();">
+
+    <article>
+
+        <div>
+            <h3>Skriven 30 dec. 2018</h3>
+            <h3 id="lastedited">Senast redigerad {lastEdited}</h3>
+        </div>
+
+        <h1>Grundstenarna för säker lagring av användaruppgifter</h1>
+
+        <h2 id="readtime">{ord} ord, tar {min} min att läsa</h2>
+
+        <p>
+            Säkerhet är extremt viktigt, speciellt när det gäller lagring av personlig information. I början när webben var mer primitiv fanns det inte
+            särskilt många som lagrade känslig information online, det fanns inte särskilt många som försökte komma åt känslig information online och därför
+            var det inte många åtgärder som togs för att skydda känslig information online. Denna tid är nu förbi och här är några av de vanligaste och mest
+            grundläggande åtgärder som tas för att skydda användaruppgifter&nbsp;online:
+        </p>
+
+        <h2 class="section-title">Kryptering av lösenord</h2>
+        <p>
+            Lösenord är den hemliga nyckeln till användares konton där deras användaruppgifter lagras, därför är det viktigt att lösenorden är väl beskyddade
+            och svåråtkomliga. Nu för tiden vet de flesta hemsidor hur man bör lagra lösenord säkert, men det är inte något man kan ta för givet. T.ex. visade
+            det sig att Adobe hade lagrat sina användares lösenord på ett väldigt osäkert sätt när 
+            <a href="https://theblog.adobe.com/important-customer-security-announcement/" target="_blank">deras databas läktes ut på internet</a>&nbsp;2013.
+        </p>
+        <p>
+            Det naiva sättet att lagra användares lösenord i en databas är att lagra lösenorden i klartext utan någon slags kryptering&nbsp;alls.
+        </p>
+        <img src="../../assets/img/cleartext.png" alt="Databasexempel med lösenord i klartext" />
+        <p>
+            I exempeldatabasen ovan lagras lösenorden bredvid användarnamnen i klartext, vilket innebär att den som har åtkomst till databasen kan logga
+            in på vilken användares konto som helst. Detta är ett problem även om det är omöjligt för hackers att få tag på databasen eftersom just nu
+            har administratörerna för hemsidan tillgång till lösenorden, vilket inte ens de ska ha. Ett lösenord är något personligt och ska därför inte
+            vara lättillgängligt för någon annan än&nbsp;användaren&nbsp;själv.
+        </p>
+        <p>
+            Lösningen till detta är att man krypterar lösenorden innan man lagrar dem i databasen. På detta vis kan inte ens administratörerna för hemsidan 
+            komma åt användares lösenord... Åtminstone&nbsp;i&nbsp;teorin.
+        </p>
+        <img src="../../assets/img/des.png" alt="Databasexempel med lösenord krypterade i DES" />
+        <p>
+            I bilden ovan är lösenorden krypterade i 
+            <a href="https://searchsecurity.techtarget.com/definition/Data-Encryption-Standard" target="_blank">DES (Data&nbsp;Encryption&nbsp;Standard)</a>
+            med nyckeln "DESPAIR", DES är en gammal och väldigt osäker krypteringsalgoritm. Ett väldigt stort och tydligt problem med DES är att längden inte är fast.
+            Den varierar beroende på hur långt lösenordet är, vilket är ett problem eftersom man då har fått en ledtråd till vad lösenordet&nbsp;kan&nbsp;vara.
+        </p>
+        <p>
+            Det andra tydliga problemet vi märker med det här sättet att skydda lösenord är att likadana lösenord ser likadana ut även när de är krypterade.
+            Alex och Eriks krypterade lösenord är identiska.
+            Detta är problematiskt eftersom man kan då med hjälp av information som t.ex. lösenordsledtrådar från flera olika användare med samma lösenord
+            lista ut vad&nbsp;lösenordet&nbsp;är.
+        </p>
+        <p>
+            Det går att fixa längdproblemet genom att använda en så kallad hashfunktion. En hashfunktion är en funktion som tar en bit text av varierande längd
+            och producerar ett unikt hash av bestämd längd. Hashfunktioner är väldigt enkla för en dator att köra framåt (text&nbsp;->&nbsp;hash) men är väldigt krångliga
+            för datorer att köra baklänges (hash&nbsp;->&nbsp;text).
+        </p>
+        <img src="../../assets/img/md5.png" alt="Databasexempel med lösenord krypterade i MD5" />
+        <p>
+            Här har lösenorden krypterats med hjälp av <a href="https://tools.ietf.org/html/rfc1321" target="_blank">MD5 (Message-Digest algorithm 5)</a> vilket användes förr
+            för att kryptera lösenord men har sedan länge varit för svag på grund av att datorers hastigheter har ökat så mycket att de nu kan knäcka
+            MD5 utan problem. MD5 används i exemplet ovan eftersom det producerar ett kort hash för att få plats&nbsp;i&nbsp;bilden.
+        </p>
+        <p>
+            Det finns en mängd olika hashalgoritmer som t.ex. SHA-1, SHA-256 och BLAKE2. SHA-1 användes fram tills relativt nyligen då den knäcktes, vilket
+            ledde till att man fick migrera till SHA-256 som idag är den rekommenderade hashalgoritmen. Detta förändras hela tiden och när datorer blir 
+            mer kraftfulla måste säkrare algoritmer&nbsp;skapas.
+        </p>
+        <p>
+            Ett problem som dyker upp när man använder sig av vanliga krypteringsalgoritmer som MD5 och SHA-1 är att även fast det inte går att
+            köra dem baklänges går det att köra dem framåt för alla möjliga kombinationer av karaktärer och spara de resulterande hashen. Det går
+            på så sätt att skapa ett uppslagsverk som berättar vilket hash som skapas av vilken kombination karaktärer. Detta är varför unika
+            lösenord är väldigt viktiga eftersom det finns en större chans att ditt lösenord inte finns med i ett sånt här uppslagsverk om det
+            är unikt till&nbsp;dig.
+        </p>
+        <p>
+            Men längdproblemet har nu lösts eftersom alla krypterade lösenord kommer att ha samma längd tack vare hashfunktionen, men problemet att
+            likadana lösenord är fortfarande likadana krypterade&nbsp;kvarstår. 
+        </p>
+        <p>
+            Detta löser man genom att använda sig av så kallat "salt". Ett salt är en slumpmässigt genererad sträng med karaktärer som blandas in med
+            lösenordet innan det går igenom hashfunktionen för att göra hashet unikt. Det kallas salt eftersom det fungerar som krydda till lösenordet.
+            Salt kallas ibland för <i>nonce</i> vilket är en förkortning för <i>number used once</i>, det kallas för nonce eftersom det ska vara något
+            slumpmässigt och unikt för varje lösenord som det används&nbsp;med.
+        </p>
+        <img src="../../assets/img/saltedmd5.png" alt="Databasexempel med lösenord och salt krypterade i MD5" />
+        <p>
+            Här är varje lösenordshash unikt även ifall lösenorden är identiska tack vare att de är saltade. Saltet är inget hemligt utan kan lagras
+            bredvid det hashade lösenordet&nbsp;i&nbsp;databasen. 
+        </p>
+        <p>
+            Problemet med uppslagsverken kvarstår dock. Nu - tack vare att lösenorden är saltade - finns det inget färdiggjort uppslagsverk online
+            som går att använda för att få reda på lösenorden, men med tillräckligt med tid kan man genom att räkna med saltet generera ett uppslagsverk
+            till dessa&nbsp;lösenord. 
+        </p>
+        <p>
+            För att lösa detta problem kör man helt enkelt sin hashalgoritm flera gånger. Man börjar med lösenordet och saltet och tar sedan hashet
+            man får från dem tillsammans med samma salt för att generera ännu ett nytt hash, sedan fortsätter man så här flera tusentals gånger. 
+            Detta förvränger hashet så mycket att det krävs oerhört mycket mer processorkraft för att kunna generera ett&nbsp;uppslagsverk. 
+        </p>
+        <img src="../../assets/img/saltedmd5iterated.png" alt="Databasexempel med lösenord och salt krypterade i MD5, körda 10.000 gånger" />
+        <p>
+            Detta är hur det slutgiltiga säkra databasexemplet ser ut. Nu skulle det krävas en enorm mängd processorkraft för att ta reda på vad
+            lösenorden egentligen är. Det är även enkelt att göra krypteringen starkare när datorer blir snabbare, allt man behöver göra är att
+            öka numret från 10.000 till ett högre&nbsp;nummer.
+        </p>
+        <p>
+            Nu kanske du undrar hur det är meningen att man ska kunna kolla ifall en användare som loggar in använder rätt lösenord om man själv inte vet
+            vad lösenordet är, för det är ju omöjligt för servern att veta vad lösenordet egentligen&nbsp;är.
+        </p>
+        <p>
+            Jo, allt man behöver göra är ta det lösenord som använder försöker logga in med och köra det tillsammans med saltet från databasen igenom 10.000
+            iterationer (varv) av hashfunktionen för att sedan få ett hash. Man kan sedan jämföra och se ifall detta hash är samma som är lagrat i databasen
+            och ifall det är det kan användaren få logga&nbsp;in.
+        </p>
+        <p>
+            <i>Det&nbsp;är&nbsp;enkelt.</i>
+        </p>
+
+        <h2 class="section-title">HTTPS och SSL</h2>
+        <p>
+            HTTPS (Hyper Text Transfer Protocol <b>Secure</b>) är en säker version av det vanliga protokollet som webbsidor använder sig av för att skicka
+            och ta emot data till och från klienter: HTTP. Till skillnad från vanlig HTTP krypteras all data som skickas över HTTPS vilket betyder att ifall
+            någon skulle få tag i datapaketen som skickas mellan klienten och servern skulle de ändå inte kunna komma åt datan&nbsp;inuti&nbsp;dem.
+        </p>
+        <p>
+            Krypteringen som används i HTTPS är SSL (Secure Sockets Layer) vilket är en form av asymmetrisk kryptering, som innebär att den använder sig av
+            två nycklar: en&nbsp;privat och en&nbsp;publik. 
+        </p>
+        <p>
+            De komponenter som krävs för SSL är följande: ett protokoll som kan användas för kommunikation (SSL), ett certifikat för att verifiera identitet
+            och en tredje part som kan gå i god för&nbsp;certifikathavaren.
+        </p>
+        <p>
+            De som agerar som tredje part kallas för certifikatauktoriteter och de är ansvariga för att validera att de hemsidor som ansöker om SSL-certifikat
+            är legitima. Det är tack vare litade certifikatauktoriteter kan webbläsaren verifiera ifall SSL-certifikatet som en server skickar till dem går att 
+            lita&nbsp;på eller&nbsp;inte.
+        </p>
+        <p>
+            Ifall ett certifikat inte är verifierat med någon litad certifikatauktoritet kommer webbläsaren att varna användaren genom att visa ett rött upplåst
+            lås i addressfältet. I äldre versioner av webbläsare brukade detta hänglås dyka upp som grönt när certifikatet gick att validera, men nu för tiden
+            tar webbläsare för givet att alla hemsidor där klienter skriver in och skickar information till servern ska vara säkrade över HTTPS och därför
+            är de nu för tiden&nbsp;gråa.
+        </p>
+        <p>
+            Som exempel är denna hemsidan validerad med ett giltigt SSL-certifikat. Ifall du vill ta en titt på hur det ser ut kan du göra så&nbsp;här:
+        </p>
+        <p>
+            1. Tryck på låset uppe i vänstra delen av&nbsp;addressfältet.
+        </p>
+        <img src="../../assets/img/certificate1.png" alt="Steg 1 för att inspektera en hemsidas SSL-certifikat" />
+        <p>
+            2. Tryck på "Certifikat".
+        </p>
+        <img src="../../assets/img/certificate2.png" alt="Steg 2 för att inspektera en hemsidas SSL-certifikat" />
+        <p>
+            Här kan du nu se SSL-certifikatet:
+        </p>
+        <img src="../../assets/img/certificate3.png" alt="Ett giltigt SSL-certifikat" />
+        <h2 class="section-title">Datavalidering och skydd från XSS</h2>
+        <p>
+            Ett ofta bortglömt säkerhetsproblem är användarens input. Den gyllene regeln när det kommer till användares input är att man aldrig ska lita på att de
+            skriver in det du förväntar dig. <b>Du&nbsp;ska&nbsp;alltid&nbsp;validera&nbsp;användares&nbsp;input.</b>
+        </p>
+        <p>
+            Användare kan lätt få din server att köra deras kod ifall du inte är noggrann med vad du låter dem skicka till servern. Detta kallas för
+            Cross Site Scripting och förkortas&nbsp;XSS.
+        </p>
+        <p>
+            Ett vanligt exempel på XSS är den typiska SQL-injektionsattacken som bygger på utnyttjning av en webbsidas&nbsp;SQL-databas. 
+        </p>
+        <p>
+            Här ser du ett exempel på hur koden till ett inloggningssystem skulle kunna&nbsp;se&nbsp;ut:
+        </p>
+        <img src="../../assets/img/sqlinject1.png" alt="$sqlquery = &quot;SELECT * FROM users WHERE user = '&quot; + $user + &quot;' and password = '&quot; + $password + &quot;'&quot;" />
+        <p>
+            Ifall användaren skriver in namnet "anna" och lösenordet "abc123" kommer SQL-satsen att se ut&nbsp;så&nbsp;här:
+        </p>
+        <img src="../../assets/img/sqlinject2.png" alt="SELECT * FROM users WHERE user = 'anna' and password = 'abc123'" />
+        <p>
+            Än så länge finns det inga problem eftersom användaren skrev in precis det vi förväntade oss. Ifall en användare istället för ett lösenord skriver
+            ' OR '' = ' kan de förändra hur SQL-satsen är uppbyggd, eftersom de använder sig av samma karaktärer som används&nbsp;i&nbsp;SQL.
+        </p>
+        <img src="../../assets/img/sqlinject3.png" alt="SELECT * FROM users WHERE user = 'anna' and password = '' OR '' = ''" />
+        <p>
+            Nu kommer den här satsen alltid låta användaren logga in, eftersom den inte längre kollar efter rätt lösenord, utan nu kollar den istället efter
+            ifall <code>''&nbsp;=&nbsp;''</code>, vilket det alltid gör, som betyder att användaren nu kan logga in på vilket konto de vill utan att kunna&nbsp;lösenordet.
+        </p>
+        <p>
+            Detta löser man genom att "sanera" användarens input. Detta betyder att man går igenom och "escape-ar" texten, som man säger på engelska.
+            Det man gör är att man t.ex. tar bort apostrofer och citattecken och ersätter dem med speciella koder. T.ex. ersätter man karaktären <code>"</code>
+            med <code>&amp;quot;</code> och <code>&</code>&nbsp;med&nbsp;<code>&amp;amp;</code>.
+        </p>
+        <p>
+            Samma problem dyker upp när man låter användare ladda upp filer till servern, för att t.ex. byta profilbild eller ladda upp ett CV. 
+            En användare skulle kunna ladda upp en fil med farlig kod som sedan körs på servern, vilket är katastrofalt för säkerheten av&nbsp;användarna.
+        </p>
+        <p>
+            Detta löser man på samma sätt, fast det är lite mer avancerat. Man kan börja med att begränsa vilka filtyper som får laddas upp och sedan kan man
+            sätta storleksbegränsningar på filerna. Det är också bra att skanna igenom filerna för att kolla efter bitar av kod och ifall någon hittas så
+            tillåts inte filen att&nbsp;laddas&nbsp;upp.
+        </p>
+        <p>
+            Det finns även andra typer av XSS men dessa två är de&nbsp;enklaste.
+        </p>
+
+        <h2 class="section-title">Lagar</h2>
+        <p>
+            Användaruppgifter online behandlades före 25 maj 2018 av <a href="https://www.datainspektionen.se/lagar--regler/personuppgiftslagen/" target="_blank">personuppgiftslagen</a>,
+            men nu är det den ökända GDPR (General Data Protection Regulation) - eller som den heter på svenska: 
+            <a href="https://www.datainspektionen.se/lagar--regler/dataskyddsforordningen/" target="_blank">Dataskyddsförordningen</a>.
+        </p>
+        <p>
+            Den nya dataskyddsförordningen skapades för att skydda användares uppgifter online och har därmed fört med sig en mängd nya krav på webbsidor. Ifall en hemsida
+            inte följer dataskyddsförordningen kan ägaren av hemsidan få betala upp till 20 miljoner euro i böter till EU, därför är det viktigt att inte göra&nbsp;det&nbsp;fel.
+        </p>
+        <p>
+            Ett enkelt sätt att förenkla dataskyddsförordningen ner till en gyllene regel är att tänka att användarna av hemsidan ska få acceptera alla villkor och
+            funktioner, de ska inte behöva tacka nej till dem utan de bör inte aktiveras förrän användaren accepterat&nbsp;dem.
+        </p>
+        <p>
+            Den tydligaste förändringen dataskyddsförordningen förde med sig till webbsidor online är att de nu måste notifiera användare att de använder sig av
+            så kallade "kakor" för att lagra information i webbläsaren. Detta måste göras eftersom kakor räknas i dataskyddsförordningen som personlig information.
+            Innan dataskyddsförordningen kunde hemsidor implicera att användarna accepterar kakorna, men det är inte längre tillåtet och därför skapades&nbsp;notifieringarna.
+        </p>
+        <p>
+            Det är också nu viktigt för hemsidor att skapa policys angående all personlig information som lagras på hemsidan. Detta inkluderar kakor men även
+            tredjepartsfunktioner som Google Analytics, i vilket fall man endast behöver länka till 
+            <p href="https://policies.google.com/privacy?hl=en" target="_blank">Googles&nbsp;policy</p>.
+        </p>
+        <p>
+            I sin integritetspolicy är det nu viktigare än någonsin att förklara tydligt hur man samlar in och lagrar användares information och även hur och var
+            användaren kan få tillgång till sin egen data och kunna ta bort den från&nbsp;servern.
+        </p>
+        <p>
+            Det rekommenderas även att man använder en förhöjd nivå av säkerhet på hemsidor i form av HTTPS och SSL, eftersom man då kan skydda sina användares
+            uppgifter mycket&nbsp;bättre. 
+        </p>
+        <p>
+            Man ska även vara väldigt noga med att inte lagra någon information som inte nödvändigtvis behöver lagras. Ifall man av någon anledning behöver skriva ut
+            en användares information på papper finns det krav på att det inte får lagras och att det måste strimlas, inte slängas på vanligt&nbsp;sätt.
+        </p>
+        <p>
+            Dataskyddsförordningen för även med sig något många användare klagat på väldigt länge: hemsidor får inte längre kryssa i rutor automatiskt när användare
+            fyller i formulär på en hemsida. Detta innebär att rutan där det står <code>Använd Bing™ som standardsökmotor</code> måste manuellt klickas i&nbsp;av&nbsp;användaren.
+        </p>
+        <p>
+            Hemsidor får inte heller "bunta ihop" flera olika saker i en kryssruta. Detta innebär att en ruta i ett formulär som löd <code>Acceptera användarvillkoren <i>och
+            använd Bing™ som standardsökmotor</i></code> inte längre är tillåtet. Användaren måste få välja varje del&nbsp;själv.
+        </p>
+        <p>
+            Om du följer alla regler ovan bör du inte ha några problem med dataskyddsförordningen.&nbsp;Enkelt!
+        </p>
+    </article>
+
+</body>
+
+</html>

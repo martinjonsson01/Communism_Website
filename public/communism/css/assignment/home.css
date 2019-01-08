@@ -1,0 +1,104 @@
+/* montserrat-regular - latin-ext_latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Montserrat Regular'), local('Montserrat-Regular'), url('../../assets/fonts/montserrat-v12-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../../assets/fonts/montserrat-v12-latin-ext_latin-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* border-box reset */
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/* html Layout */
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+/* body Layout */
+body {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    justify-items: stretch;
+    orientation: horizontal;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    overflow: hidden;
+}
+
+/* a Layout */
+a {
+    display: flex;
+    height: 100%;
+    min-height: 20%;
+    width: auto;
+    padding: 1rem;
+}
+
+/* a Presentation */
+a {
+    text-decoration: none;
+    background-position: center;
+    background-size: cover;
+    transition: cubic-bezier(0.19, 1, 0.22, 1) 500ms;
+}
+
+/* a Animation */
+a:hover {
+    background-position-y: -30px;
+}
+
+/* h1 Layout */
+h1 {
+    text-align: center;
+    margin: auto;
+    font-size: 2.2rem;
+    padding: 0.5rem;
+}
+
+/* h1 Presentation */
+h1 {
+    color: #000000;
+    background: #ffffffd7;
+    /*font-family: Montserrat, Arial, Helvetica, sans-serif;*/
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* changes Presentation */
+#changes {
+    /* Two background images; One lowres and one highres. The lowres one gets loaded before the highres one so that the user doesn't
+       have to stare at a blank screen. The higres one replaces the lowres one when it gets downloaded. */
+    background-image: url(../../assets/img/we_live_in_a_society.jpg), url(../../assets/img/we_live_in_a_society_lowres.jpg);
+}
+/* cornerstones Presentation */
+#cornerstones {
+    background-image: url(../../assets/img/tell_me_your_life_story.jpg), url(../../assets/img/tell_me_your_life_story_lowres.jpg);
+}
+/* images Presentation */
+#images {
+    background-image: url(../../assets/img/photo_pile.jpg), url(../../assets/img/photo_pile_lowres.jpg);
+}
+/* security Presentation */
+#security {
+    background-image: url(../../assets/img/hacker_boi.jpg), url(../../assets/img/hacker_boi_lowres.jpg);
+}
+/* documentation Presentation */
+#documentation {
+    background-image: url(../../assets/img/documentation.png);
+}
+
+/* media Selectors */
+@media only screen and (max-width: 1774px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
