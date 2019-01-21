@@ -27,6 +27,7 @@
 
         <h2 id="readtime">{ord} ord, tar {min} min att läsa</h2>
 
+        <!-- Intro -->
         <p>
             Säkerhet är extremt viktigt, speciellt när det gäller lagring av personlig information. I början när webben var mer primitiv fanns det inte
             särskilt många som lagrade känslig information online, det fanns inte särskilt många som försökte komma åt känslig information online och därför
@@ -34,12 +35,13 @@
             grundläggande åtgärder som tas för att skydda användaruppgifter&nbsp;online:
         </p>
 
+        <!-- Kryptering av lösenord -->
         <h2 class="section-title">Kryptering av lösenord</h2>
         <p>
             Lösenord är den hemliga nyckeln till användares konton där deras användaruppgifter lagras, därför är det viktigt att lösenorden är väl beskyddade
             och svåråtkomliga. Nu för tiden vet de flesta hemsidor hur man bör lagra lösenord säkert, men det är inte något man kan ta för givet. T.ex. visade
             det sig att Adobe hade lagrat sina användares lösenord på ett väldigt osäkert sätt när 
-            <a href="https://theblog.adobe.com/important-customer-security-announcement/" target="_blank">deras databas läktes ut på internet</a>&nbsp;2013.
+            <a href="https://theblog.adobe.com/important-customer-security-announcement/" target="_blank" rel="noopener">deras databas läktes ut på internet</a>&nbsp;2013.
         </p>
         <p>
             Det naiva sättet att lagra användares lösenord i en databas är att lagra lösenorden i klartext utan någon slags kryptering&nbsp;alls.
@@ -58,7 +60,7 @@
         <img src="../../assets/img/des.png" alt="Databasexempel med lösenord krypterade i DES" />
         <p>
             I bilden ovan är lösenorden krypterade i 
-            <a href="https://searchsecurity.techtarget.com/definition/Data-Encryption-Standard" target="_blank">DES (Data&nbsp;Encryption&nbsp;Standard)</a>
+            <a href="https://searchsecurity.techtarget.com/definition/Data-Encryption-Standard" target="_blank" rel="noopener">DES (Data&nbsp;Encryption&nbsp;Standard)</a>
             med nyckeln "DESPAIR", DES är en gammal och väldigt osäker krypteringsalgoritm. Ett väldigt stort och tydligt problem med DES är att längden inte är fast.
             Den varierar beroende på hur långt lösenordet är, vilket är ett problem eftersom man då har fått en ledtråd till vad lösenordet&nbsp;kan&nbsp;vara.
         </p>
@@ -75,7 +77,7 @@
         </p>
         <img src="../../assets/img/md5.png" alt="Databasexempel med lösenord krypterade i MD5" />
         <p>
-            Här har lösenorden krypterats med hjälp av <a href="https://tools.ietf.org/html/rfc1321" target="_blank">MD5 (Message-Digest algorithm 5)</a> vilket användes förr
+            Här har lösenorden krypterats med hjälp av <a href="https://tools.ietf.org/html/rfc1321" target="_blank" rel="noopener">MD5 (Message-Digest algorithm 5)</a> vilket användes förr
             för att kryptera lösenord men har sedan länge varit för svag på grund av att datorers hastigheter har ökat så mycket att de nu kan knäcka
             MD5 utan problem. MD5 används i exemplet ovan eftersom det producerar ett kort hash för att få plats&nbsp;i&nbsp;bilden.
         </p>
@@ -135,6 +137,7 @@
             <i>Det&nbsp;är&nbsp;enkelt.</i>
         </p>
 
+        <!-- HTTPS och SSL -->
         <h2 class="section-title">HTTPS och SSL</h2>
         <p>
             HTTPS (Hyper Text Transfer Protocol <b>Secure</b>) är en säker version av det vanliga protokollet som webbsidor använder sig av för att skicka
@@ -175,10 +178,12 @@
             Här kan du nu se SSL-certifikatet:
         </p>
         <img src="../../assets/img/certificate3.png" alt="Ett giltigt SSL-certifikat" />
+
+        <!-- Datavalidering och skydd från XSS -->
         <h2 class="section-title">Datavalidering och skydd från XSS</h2>
         <p>
             Ett ofta bortglömt säkerhetsproblem är användarens input. Den gyllene regeln när det kommer till användares input är att man aldrig ska lita på att de
-            skriver in det du förväntar dig. <b>Du&nbsp;ska&nbsp;alltid&nbsp;validera&nbsp;användares&nbsp;input.</b>
+            skriver in det du förväntar dig. <b>Du ska alltid validera ;användares&nbsp;input.</b>
         </p>
         <p>
             Användare kan lätt få din server att köra deras kod ifall du inte är noggrann med vad du låter dem skicka till servern. Detta kallas för
@@ -192,16 +197,16 @@
         </p>
         <img src="../../assets/img/sqlinject1.png" alt="$sqlquery = &quot;SELECT * FROM users WHERE user = '&quot; + $user + &quot;' and password = '&quot; + $password + &quot;'&quot;" />
         <p>
-            Ifall användaren skriver in namnet "anna" och lösenordet "abc123" kommer SQL-satsen att se ut&nbsp;så&nbsp;här:
+            Ifall användaren skriver in namnet <code>anna</code> och lösenordet <code>abc123</code> kommer SQL-satsen att se ut&nbsp;så&nbsp;här:
         </p>
         <img src="../../assets/img/sqlinject2.png" alt="SELECT * FROM users WHERE user = 'anna' and password = 'abc123'" />
         <p>
             Än så länge finns det inga problem eftersom användaren skrev in precis det vi förväntade oss. Ifall en användare istället för ett lösenord skriver
-            ' OR '' = ' kan de förändra hur SQL-satsen är uppbyggd, eftersom de använder sig av samma karaktärer som används&nbsp;i&nbsp;SQL.
+            <code>' OR '' = '</code> kan de förändra hur SQL-satsen är uppbyggd, eftersom de använder sig av samma karaktärer som används&nbsp;i&nbsp;SQL.
         </p>
         <img src="../../assets/img/sqlinject3.png" alt="SELECT * FROM users WHERE user = 'anna' and password = '' OR '' = ''" />
         <p>
-            Nu kommer den här satsen alltid låta användaren logga in, eftersom den inte längre kollar efter rätt lösenord, utan nu kollar den istället efter
+            Nu kommer den här satsen alltid att låta användaren logga in, eftersom den inte längre kollar efter rätt lösenord, utan nu kollar den istället efter
             ifall <code>''&nbsp;=&nbsp;''</code>, vilket det alltid gör, som betyder att användaren nu kan logga in på vilket konto de vill utan att kunna&nbsp;lösenordet.
         </p>
         <p>
@@ -222,11 +227,12 @@
             Det finns även andra typer av XSS men dessa två är de&nbsp;enklaste.
         </p>
 
+        <!-- Lagar -->
         <h2 class="section-title">Lagar</h2>
         <p>
-            Användaruppgifter online behandlades före 25 maj 2018 av <a href="https://www.datainspektionen.se/lagar--regler/personuppgiftslagen/" target="_blank">personuppgiftslagen</a>,
+            Användaruppgifter online behandlades före 25 maj 2018 av <a href="https://www.datainspektionen.se/lagar--regler/personuppgiftslagen/" target="_blank" rel="noopener">personuppgiftslagen</a>,
             men nu är det den ökända GDPR (General Data Protection Regulation) - eller som den heter på svenska: 
-            <a href="https://www.datainspektionen.se/lagar--regler/dataskyddsforordningen/" target="_blank">Dataskyddsförordningen</a>.
+            <a href="https://www.datainspektionen.se/lagar--regler/dataskyddsforordningen/" target="_blank" rel="noopener">Dataskyddsförordningen</a>.
         </p>
         <p>
             Den nya dataskyddsförordningen skapades för att skydda användares uppgifter online och har därmed fört med sig en mängd nya krav på webbsidor. Ifall en hemsida
@@ -244,7 +250,7 @@
         <p>
             Det är också nu viktigt för hemsidor att skapa policys angående all personlig information som lagras på hemsidan. Detta inkluderar kakor men även
             tredjepartsfunktioner som Google Analytics, i vilket fall man endast behöver länka till 
-            <p href="https://policies.google.com/privacy?hl=en" target="_blank">Googles&nbsp;policy</p>.
+            <p href="https://policies.google.com/privacy?hl=en" target="_blank" rel="noopener">Googles&nbsp;policy</p>.
         </p>
         <p>
             I sin integritetspolicy är det nu viktigare än någonsin att förklara tydligt hur man samlar in och lagrar användares information och även hur och var
@@ -269,6 +275,9 @@
         <p>
             Om du följer alla regler ovan bör du inte ha några problem med dataskyddsförordningen.&nbsp;Enkelt!
         </p>
+
+        <!-- Upp-knapp -->
+        <button onclick="topFunction()" id="topButton" title="Tillbaka till toppen">Upp</button>
     </article>
 
 </body>

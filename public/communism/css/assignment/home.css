@@ -72,6 +72,34 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* back Layout */
+#back {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    height: 48px;
+    min-height: 0;
+}
+
+/* back Presentation */
+#back {
+    background-color: #eeeeee; /* Set a background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); /* Dropshadow */
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1); /* Animate changes */
+}
+
+/* back hover Presentation */
+#back:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); /* Dropshadow */
+}
+
+/* back img Layout */
+#back img {
+    height: 48px;
+    width: 48px;
+}
+
 /* changes Presentation */
 #changes {
     /* Two background images; One lowres and one highres. The lowres one gets loaded before the highres one so that the user doesn't

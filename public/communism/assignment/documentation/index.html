@@ -5,38 +5,276 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dokumentation - Murtin</title>
+    <title>Problematisering - Murtin</title>
     <meta name="Description" content="A place where you can join the ranks of the enlightened.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../../assets/img/marx_stylized.png" />
     <link rel="stylesheet" type="text/css" media="screen" href="../../css/assignment/assignment.css" />
+    <script async src="../../js/assignment.js"></script>
+    <script src="../../js/3rdpartycode.js"></script>
 </head>
 
-<body>
+<body onload="updateDynamicHeaders();">
 
     <article>
-        <h1>De Största Sammhällsförändringar som Internet Medfört</h1>
+        <div>
+            <h3>Skriven 30 dec. 2018</h3>
+            <h3 id="lastedited">Senast redigerad {lastEdited}</h3>
+        </div>
 
+        <h1>Problematisering</h1>
+
+        <h2 id="readtime">{ord} ord, tar {min} min att läsa</h2>
+
+        <!-- Intro -->
         <p>
-            Test
-            <br>
-            test
+            Här är alla problem som stöttes på listade tillsammans med deras lösningar.
+        </p>
+
+        <!-- Bildfiler är för stora -->
+        <h2 class="section-title">Bildfiler är för stora</h2>
+        <p>
+            Något som är väldigt viktigt när man gör webbsidor är hur snabbt de laddar. Detta är på grund av att
+            användares förväntan är att
+            webbsidor ska vara snabba, och när de inte är det tröttnar användaren väldigt snabbt och det finns en risk
+            att de struntar i
+            webbsidan totalt.
         </p>
         <p>
-            Test
+            Man vill ha med många bilder på sina webbsidor eftersom de kan göra väldigt mycket för att förändra känslan
+            av hemsidan och de kan
+            beskriva vissa koncept mycket bättre än vad text skulle kunna. Problemet är att bildfiler i hög kvalité är
+            väldigt stora, vilket
+            betyder att det kommer ta längre tid för webbläsaren (speciellt på mobila nätverk, vilket blir allt
+            vanligare eftersom mer och mer
+            personer surfar nätet på sin mobil) att ladda ned alla bilder på hemsidan, vilket i sin tur leder till att
+            hemsidan tar längre tid
+            att ladda.
         </p>
         <p>
-            Test
+            För att lösa detta problem är det viktigt att man förstår vilka typer av bilder som bör sparas i vilka
+            format. För att förstå detta
+            krävs en förståelse av hur de olika bildformatens komprimering fungerar. T.ex. använder sig
+            <a href="http://www.libpng.org/pub/png/" target="_blank" rel="noopener">PNG (Portable Network Graphics)</a>
+            formatet av så kallad "lossless", eller
+            "förlustfri" komprimering. Förlustfri komprimering innebär att ingen information går förlorad i
+            komprimeringsprocessen, vilket kan leda
+            till större filer om det finns mycket information i bilden. Därför rekommenderas PNG-formatet för bilder
+            med tydliga raka linjer som
+            behöver bevaras, med mycket ytor utan textur. T.ex. skärmdumpar och logotyper.
         </p>
         <p>
-            Test
+            Det andra stora filformatet för bilder - <a href="https://jpeg.org/" target="_blank" rel="noopener">JPEG
+                (Joint Photographic Experts Group)</a>
+            använder sig av så kallad "destruktiv" komprimering, vilket innebär att information förloras i
+            komprimeringsprocessen. Fastän
+            information går förlorad är JPEG optimerad för att det mänskliga ögat inte ska märka att det saknas
+            information, vilket beroende
+            på hur mycket komprimering som har använts ofta fungerar väldigt väl. JPEG rekommenderas för fotografier av
+            den verkliga världen,
+            på grund av att fotografier ofta innehåller mycket komplexa material och texturer, ljusytor, med mera - som
+            skulle leda till
+            enorma storlekar om man använde förlustfria komprimeringstekniker. Det är alltså nödvändigt att ta bort
+            information och därför
+            är JPEG optimerat för just fotografier och bilder med mycket blandad information.
         </p>
         <p>
-            Test
+            Ett tredje, mycket modernare bildformat är <a href="https://developers.google.com/speed/webp/" target="_blank"
+                rel="noopener">WebP</a> som inte än
+            har stöd av alla webbläsare, utan bara stöds av Chrome och ett par andra. Detta format är en kombination av
+            PNG och JPEG i och med att
+            den har både förlustfri och destruktiv komprimering. I sin destruktiva komprimering är den upp till 39% mer
+            effektiv än JPEG och en
+            fördel den har över JPEG är att den stödjer transparens (genomskinlig bakgrund). Dock är PNG fortfarande
+            ibland bättre för vissa
+            minimalistiska bilder.
         </p>
         <p>
-            Test
+            Alla tre typer av bildformat har använts i den här hemsidan och med hjälp av <code>&lt;picture&gt;</code>-elementet
+            är det möjligt
+            att använda WebP-bilder i webbläsare som stödjer det och JPEG/PNG i de som inte gör det. Detta, kombinerat
+            med en god mängd
+            komprimering av alla JPEG-bilder leder till att de flesta bilder på hemsidan är runt 50 kb i storlek,
+            vilket är litet nog för
+            att en webbläsare med någorlunda bra internetanslutning ska kunna ladda ned dem inom ett par sekunder.
         </p>
+
+        <!-- Bakgrundsbilder är enorma -->
+        <h2 class="section-title">Bakgrundsbilder är enorma</h2>
+        <p>
+            Utöver bilderna som använts i webbsidans innehåll har även bilder använts som bakgrund för vissa sidor.
+            T.ex. har <a href="../../404.html">404-sidan</a>
+            en bakgrundsbild som täcker hela bakgrunden. Dessa bilder är mycket större i upplösning än bilder som
+            använts i innehållet av webbsidan eftersom de måste
+            täcka hela bakgrunden, vilket leder till att de har väldigt stora filstorlekar. Detta är ett problem för
+            ifall webbläsaren inte hinner ladda ned
+            bakgrundsbilden för en sida kommer sidan att vara helt vit, vilket inte passar in med resten av sidan och
+            är obehagligt för användaren.
+        </p>
+        <p>
+            Komprimering gick inte att använda för mycket för att lösa detta problem eftersom det skulle krävas så
+            mycket komprimering att det skulle tydligt märkas
+            och skulle försämra kvalitén av hemsidan, vilket inte alls är önskvärt. För att lösa detta skapades en
+            högkvalité-version med väldigt lite komprimering
+            och en lågkvalité-version med väldigt mycket komprimering. När användaren går in på sidan laddas först
+            lågkvalité-versionen ned, vilket går relativt snabbt,
+            och när den är nedladdad påbörjas nedladdningen av högkvalité-versionen, när högkvalité-versionen är
+            nedladdad ersätts lågkvalité-versionen med den.
+        </p>
+        <p>
+            Detta är tydligt om man kollar på detaljerade delar av bakgrunden, som i detta exemplet:
+        </p>
+        <video autoplay loop muted>
+            <source src="../../assets/img/incremental_loading.mp4" type="video/mp4">
+        </video>
+
+        <!-- Skärmläsare kan inte läsa bilder -->
+        <h2 class="section-title">Skärmläsare kan inte läsa bilder</h2>
+        <p>
+            Synskadade personer är inte blockerade från webben utan de kan använda sig av en typ av program som heter
+            skärmläsare och skärmläsare gör precis det man
+            skulle gissa att de gör; de läser upp texten som finns på skärmen. Problemet med skärmläsare är att de inte
+            kan beskriva bilder, och då kan synskadade
+            gå miste om viktiga detaljer av webbsidan. För att vara så användarvänlig som möjligt finns det en <code>alt</code>-tagg
+            i <code>img</code>-elementet
+            som man kan fylla i. Inuti taggen beskrivs bilden med text, vilket skärmläsaren sedan kan läsa upp. Denna
+            tagg visas även ifall bilden inte går att
+            ladda på grund av något fel vilket innebär att den går att använda som en typ av backup.
+        </p>
+
+        <!-- Text är svårläst -->
+        <h2 class="section-title">Text är svårläst</h2>
+        <p>
+            På den första delen av den här webbsidan - kommunismdelen - används inte särskilt mycket text och
+            huvudfokusen av den delen av hemsidan är att
+            vara stilistisk och temarelevant, vilket betyder att det inte behövs lägga särskilt mycket fokus på hur
+            lättläslig texten är. I den här
+            avtentningsdelen består innehållet dock huvudsakligen av text, vilket innebär att det är viktigt att texten
+            är lättläst.
+        </p>
+        <p>
+            Ett antal åtgärder har tagits för att göra texten så lättläslig som möjligt:
+        </p>
+        <p>
+            Typsnittet är <code>Georgia</code>, vilket är ett väldigt tydligt och relativt stort typsnitt. Det har även
+            seriffer vilket innebär att
+            det finns små utstickande bitar på bokstäverna. Seriffer rekommenderas oftast för långa texter och
+            akademiskt skrivande eftersom de underlättar
+            för ögat att följa linjerna, vilket ökar läshastigheten.
+        </p>
+        <p>
+            Själva artikeln med text är även centrerat en bit till vänster på skärmen (om skärmen är stor nog). Detta
+            är eftersom det har visats, enligt
+            <a href="https://www.nngroup.com/articles/horizontal-attention-leans-left/" target="_blank" rel="noopener">en
+                studie</a> att användare spenderar en stor
+            majoritet mer tid tittandes på vänstra sidan av skärmen jämfört med den högra sidan. Detta skulle kunna
+            bero på att text i västvärlden börjar
+            från vänster och att folk därför börjar läsa av information på skärmen från vänster till höger.
+        </p>
+        <img src="https://media.nngroup.com/media/editor/2017/10/20/screen-shot-2017-10-20-at-73849-pm.png" alt="En graf som visar att folk kollar mer på vänstra delen av skärmen än den högra.">
+        <p>
+            En annan sak som är annorlunda med text på skärm jämfört med text på papper är att liten text är mycket
+            svårare att läsa på skärm än på papper.
+            Därför är textstorleken väldigt stor, för att underlätta läsandet. Det är mycket enklare att skrolla än att
+            behöva spänna ögonen.
+        </p>
+        <p>
+            <code>Sådana här rutor</code> har även använts för att markera speciella tekniska ord som annars skulle
+            kunna misstolkas som stavfel.
+        </p>
+        <p>
+            Sist men inte minst används inga färger på sidan. Detta förstärker kontrasten mellan den svarta texten och
+            den vita bakgrunden. En svart
+            bakgrund med vit text övervägdes först, för att underlätta läsning i mörker, men bestämdes emot när det var
+            tydligt att svart text på vit
+            bakgrund är enklare att läsa. Att det inte finns någon annan färg på sidan låter läsaren fokusera på det
+            som är relevant: texten.
+        </p>
+
+        <!-- HTML-dokumentens filändelse är synlig -->
+        <h2 class="section-title">HTML-dokumentens filändelse är synlig</h2>
+        <p>
+            Många lägger nog inte märken till detta och många bryr sig troligen inte om det, men det händer att man
+            märker ibland på vissa sidor
+            att addressen i addressfältet slutar med <code>.html</code>, vilket är logiskt eftersom det är en webbsida
+            man är inne på och de är HTML-dokument.
+            Detta kan ge intrycket av en amatörhemsida eftersom de flesta stora moderna hemsidor använder sig av mer
+            avancerade addresssystem som
+            leder till att addressen inte faktiskt pekar till platsen av HTML-dokumentet utan bara är en referens till
+            platsen.
+        </p>
+        <p>
+            Denna hemsida använder sig inte av något avancerat addresssystem men för att få addressen att se mer
+            professionell ut har varje sida
+            fått en egen mapp och inuti den mappen ligger HTML-koden i <code>index.html</code> eftersom det är det
+            dokumentet som öppnas automatiskt
+            när man navigerar till en mapp. Detta ger illusionen av att hemsidan är mer avancerad än den är.
+        </p>
+
+        <!-- Distraherande navigationsfält -->
+        <h2 class="section-title">Distraherande navigationsfält</h2>
+        <p>
+            Många webbsidor använder sig av navigationsfält för att låta användaren navigera runt på sidan.
+            Navigationsfält är väldigt bra att använda
+            eftersom en stor majoritet av användare känner igen och förstår hur de fungerar direkt.
+        </p>
+        <p>
+            Nackdelen med navigationsfält är att de är allra högst upp på webbsidan, vilket betyder att man tvingas
+            skrolla hela vägen upp för att kunna
+            navigera någonstans. Detta löser många webbsidor genom att fästa navigationsfältet högst upp på skärmen med
+            hjälp av css-regeln
+            <code>position: absolute</code>.
+        </p>
+        <p>
+            Problemet som uppstår med den metoden är att, beroende på hur högt navigationsfältet är och hur stor
+            skärmen är, kan navigationsfältet vara
+            i vägen och distrahera från innehållet på webbsidan.
+        </p>
+        <p>
+            Just därför valde jag att skriva ett väldigt simpelt skript som ser till att navigationsfältet dyker upp
+            när man skrollar uppåt och gömmer
+            sig när man skrollar nedåt. Detta leder till att navigationsfältet är gömt under tiden användaren skrollar
+            nedåt och kollar på webbsidans innehåll,
+            och när användaren känner sig klar och vill navigera någon annanstans skrollar de nästan instinktivt uppåt,
+            vilket gör att navigationsfältet dyker upp.
+        </p>
+        <p>
+            Med denna metoden kan man både ha kakan och äta den. <i>(Patent Pending)</i>
+        </p>
+        <p>
+            Anledningen till att delen av hemsidan dedikerad till avtentning inte har något navigationsfält är för att jag ville
+            emulera, i designen av dessa sidor, känslan av enskilda fysiska pappersdokument. Det skulle förstöra minimalismen
+            ifall det fanns ett navigationsfält. Istället för ett navigationsfält får webbläsarens navigationspilar användas.
+        </p>
+
+        <!-- Sidan laddas långsamt och är osäker -->
+        <h2 class="section-title">Sidan laddas långsamt och är osäker</h2>
+        <p>
+            Webbsidans prestanda och säkerhet har bekräftats och justerats med hjälp av Chromes inbyggda profiler
+            <a href="https://developers.google.com/web/tools/lighthouse/#devtools" target="_blank" rel="noopener">Lighthouse</a>
+            som skannar igenom sidan
+            och varnar om olika säkerhetsproblem eller prestandaproblem.
+        </p>
+        <p>
+            Ett annat väldigt likt verktyg som också har använts är
+            <a href="https://developers.google.com/speed/pagespeed/insights/" target="_blank" rel="noopener">Googles
+                PageSpeed</a>.
+        </p>
+
+        <!-- Länkar dirigerar om användaren till andra sidor -->
+        <h2 class="section-title">Länkar dirigerar om användaren till andra sidor</h2>
+        <p>
+            Något många användare stör sig på är att länkar ofta öppnas i samma fönster som man klickade i, vilket tar
+            användaren bort från
+            webbsidan, vilket man inte vill.
+        </p>
+        <p>
+            Detta var enkelt att lösa genom att lägga till <code>target="_blank"</code>-attributen på alla länkar.
+        </p>
+        </ul>
+
+        <!-- Upp-knapp -->
+        <button onclick="topFunction()" id="topButton" title="Tillbaka till toppen">Upp</button>
     </article>
 
 </body>
